@@ -1,0 +1,1 @@
+# Django-sticky-note-p2
