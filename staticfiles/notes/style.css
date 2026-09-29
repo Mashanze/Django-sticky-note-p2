@@ -1,0 +1,27 @@
+body {
+    background-color: #f4f6f9;
+}
+
+.sticky-note-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 12px;
+}
+
+.sticky-note-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Specific color tags */
+.bg-light-cloud {
+    background-color: #eef2f7 !important;
+}
+.bg-sunny-yellow {
+    background-color: #fff9db !important;
+}
+.bg-mint-green {
+    background-color: #e6fcf5 !important;
+}
+.bg-soft-peach {
+    background-color: #fff0f6 !important;
+}

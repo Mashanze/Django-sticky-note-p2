@@ -1,12 +1,32 @@
-{% extends 'base.html' %}
+{% extends 'notes/base.html' %}
 {% block content %}
-<h2>All Notes</h2>
-<a href="{% url 'note_create' %}">+ Create New Note</a>
-<ul>
+<h1 class="mb-4">My Sticky Notes 📝</h1>
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title">Add a New Note</h5>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save Note</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
     {% for note in notes %}
-        <li><a href="{% url 'note_detail' pk=note.pk %}">{{ note.title }}</a></li>
+    <div class="col-md-4 mb-3">
+        <div class="card h-100 shadow-sm border-0 bg-white">
+            <div class="card-body">
+                <h5 class="card-title">{{ note.title }}</h5>
+                <p class="card-text">{{ note.content }}</p>
+                <p class="text-muted small"><span class="badge bg-secondary">{{ note.color }}</span></p>
+                <a href="{% url 'note_delete' note.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </div>
+        </div>
+    </div>
     {% empty %}
-        <p>No sticky notes found.</p>
+    <p class="text-muted">No notes yet. Create your first one above!</p>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}
